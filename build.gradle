@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+compileJava.options.encoding = 'UTF-8'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'org.ow2.asm:asm:5.0.4'
+}
+
+jar {
+	from {
+		configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+	manifest {
+		attributes (
+				"Premain-Class": "yushijinhun.unblockmcservers.Premain"
+		)
+	}
+}
+
