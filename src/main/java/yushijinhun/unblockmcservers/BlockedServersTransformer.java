@@ -12,11 +12,10 @@ import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Opcodes;
 
-
 public class BlockedServersTransformer implements ClassFileTransformer {
 
 	private static final Logger LOGGER = Logger.getLogger(BlockedServersTransformer.class.getCanonicalName());
-	private static final String[] nonTransformablePackages = new String[] { "java.", "javax.", "com.sun.", "com.oracle.", "jdk.", "sun.", "org.apache.", "com.google.", "oracle.", "com.oracle.", "com.paulscode.", "io.netty.", "org.lwjgl.", "net.java.", "org.w3c.", "javassist" };
+	private static final String[] nonTransformablePackages = new String[] { "java.", "javax.", "com.sun.", "com.oracle.", "jdk.", "sun.", "oracle.", "com.oracle.", "net.java.", "javassist" };
 
 	@Override
 	public byte[] transform(ClassLoader loader, final String className, Class<?> classBeingRedefined, ProtectionDomain protectionDomain, byte[] classfileBuffer) throws IllegalClassFormatException {
